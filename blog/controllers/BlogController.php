@@ -2,12 +2,13 @@
 
 namespace blog\controllers;
 
+use app\models\User;
 use yii\web\Controller;
 
 /**
  * Default controller for the `blog` module
  */
-class DefaultController extends Controller
+class BlogController extends Controller
 {
     /**
      * Renders the index view for the module
@@ -15,8 +16,9 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        var_dump(\Yii::$app->name);
-        die();
-//        return $this->render('index');
+        //$appPath = \Yii::getAlias('@app');
+        $user = new User();
+        var_dump($user);
+        //return $this->render('index.twig');
     }
 }

@@ -1,29 +1,28 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
-
 $config = [
-    'id' => 'basic',
+    'id' => 'app',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'modules' => [
-        'blog' => [
-            'class' => 'blog\Blog',
-        ],
-    ],
+    'aliases' => require __DIR__ . '/aliases.php',
+    'modules' => require __DIR__ . '/modules.php',
+    'layout' => false,
     'components' => [
+        'db' => require __DIR__ . '/db.php',
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => require __DIR__ . '/urls.php'
+        ],
         'request' => [
             'cookieValidationKey' => 'sC2a3J_QIzlPlik2Y0fbrHstoBctC-j1',
         ],
-//        'cache' => [
-//            'class' => 'yii\caching\FileCache',
-//        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -38,7 +37,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => require __DIR__ . '/db.php',
         'view' => [
             'class' => 'yii\web\View',
             'renderers' => [
@@ -46,24 +44,17 @@ $config = [
                     'class' => 'yii\twig\ViewRenderer',
                     'cachePath' => '@runtime/Twig/cache',
                     'options' => [
-                        'debug' => false,
                         'auto_reload' => true,
                     ],
                     'globals' => [
                         'html' => '\yii\helpers\Html',
                         'url' => '\yii\helpers\Url',
                     ],
-                    'uses' => ['yii\bootstrap'],
                 ],
             ],
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => require __DIR__ . '/urls.php'
-        ],
     ],
-    'params' => $params,
+    'params' => require __DIR__ . '/params.php',
 ];
 
 if (YII_ENV_DEV) {
