@@ -3,8 +3,11 @@
 $config = [
     'id' => 'console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
     'aliases' => require __DIR__ . '/aliases.php',
+    'bootstrap' => [
+        'log',
+    ],
+    //modules' => require __DIR__ . '/modules.php',
     'components' => [
         'log' => [
             'targets' => [
