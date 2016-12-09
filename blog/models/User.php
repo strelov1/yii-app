@@ -2,12 +2,11 @@
 
 namespace blog\models;
 
-use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
+use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
 use yii\db\ActiveRecord;
 use Yii;
-
 /**
  * User model
  *

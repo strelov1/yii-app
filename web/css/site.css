@@ -1,39 +1,68 @@
-html,
 body {
-    height: 100%;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+.header {
+    margin-left: 1em;
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
+.header h1 a {
+    text-decoration: none;
+}
+
+.header ul {
+    list-style: none;
+    padding: 0;
+}
+
+.header ul li {
+    display: inline;
+    margin-left: .5em;
+}
+
+.header ul li form {
+    display: inline;
+}
+
+.header ul li form input[type=submit] {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.header ul a {
+    text-decoration: none;
+    padding: .5em;
+}
+
+.header ul li.active a {
+    color: #fff;
+    background: #0088e4;
+}
+
+.content {
+    padding: .5em 1em;
 }
 
 .footer {
-    height: 60px;
-    background-color: #f5f5f5;
     border-top: 1px solid #ddd;
-    padding-top: 20px;
+    padding: 1em;
+    margin-top: 1em;
 }
 
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
+.form-group {
+    margin-bottom: .5em;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.form-group.has-error .form-control {
+    border-color: #c55;
 }
 
-.not-set {
+.form-group.required label:after {
+    content:" *";
     color: #c55;
-    font-style: italic;
 }
 
 /* add sorting icons to gridview sort links */
@@ -88,28 +117,4 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
-}
-
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding: 15px;
-    border: none;
-}
-
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 15px;
-    }
-}
-
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
-}
-
-.nav > li > form > button.logout:focus {
-    outline: none;
 }

@@ -19,7 +19,6 @@ class Blog extends \yii\base\Module
     {
         parent::init();
 
-        // custom initialization code goes here
         $config = require __DIR__ . '/config/config.php';
         \Yii::$app->reconfigure($config);
     }

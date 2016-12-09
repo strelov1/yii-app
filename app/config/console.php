@@ -1,14 +1,15 @@
 <?php
 
-$config = [
+return [
     'id' => 'console',
-    'basePath' => dirname(__DIR__),
+    'basePath' => dirname(dirname(__DIR__)),
+    'bootstrap' => ['log'],
     'aliases' => require __DIR__ . '/aliases.php',
-    'bootstrap' => [
-        'log',
-    ],
-    //modules' => require __DIR__ . '/modules.php',
+    'controllerNamespace' => 'app\commands',
     'components' => [
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
         'log' => [
             'targets' => [
                 [
@@ -21,12 +22,3 @@ $config = [
     ],
     'params' => require __DIR__ . '/params.php',
 ];
-
-if (YII_ENV_DEV) {
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
-    ];
-}
-
-return $config;

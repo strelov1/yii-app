@@ -2,7 +2,6 @@
 
 namespace blog\controllers;
 
-use blog\models\User;
 use yii\web\Controller;
 
 /**
@@ -16,8 +15,8 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $user = new User;
-        var_dump($user); die();
+//        $user = \Yii::$app->user;
+//        var_dump($user);
         return $this->render('index.twig');
     }
 }

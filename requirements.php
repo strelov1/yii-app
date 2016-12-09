@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Application requirement checker script.
@@ -9,23 +10,18 @@
  * If you are using Linux you can create a hard link instead, using the following command:
  * ln requirements.php ../requirements.php
  */
-
 // you may need to adjust this path to the correct Yii framework path
 $frameworkPath = dirname(__FILE__) . '/vendor/yiisoft/yii2';
-
 if (!is_dir($frameworkPath)) {
     echo '<h1>Error</h1>';
     echo '<p><strong>The path to yii framework seems to be incorrect.</strong></p>';
     echo '<p>You need to install Yii framework via composer or adjust the framework path in file <abbr title="' . __FILE__ . '">' . basename(__FILE__) . '</abbr>.</p>';
     echo '<p>Please refer to the <abbr title="' . dirname(__FILE__) . '/README.md">README</abbr> on how to install Yii.</p>';
 }
-
 require_once($frameworkPath . '/requirements/YiiRequirementChecker.php');
 $requirementsChecker = new YiiRequirementChecker();
-
 $gdMemo = $imagickMemo = 'Either GD PHP extension with FreeType support or ImageMagick PHP extension with PNG support is required for image CAPTCHA.';
 $gdOK = $imagickOK = false;
-
 if (extension_loaded('imagick')) {
     $imagick = new Imagick();
     $imagickFormats = $imagick->queryFormats('PNG');
@@ -35,7 +31,6 @@ if (extension_loaded('imagick')) {
         $imagickMemo = 'Imagick extension should be installed with PNG support in order to be used for image CAPTCHA.';
     }
 }
-
 if (extension_loaded('gd')) {
     $gdInfo = gd_info();
     if (!empty($gdInfo['FreeType Support'])) {
@@ -44,7 +39,6 @@ if (extension_loaded('gd')) {
         $gdMemo = 'GD extension should be installed with FreeType support in order to be used for image CAPTCHA.';
     }
 }
-
 /**
  * Adjust requirements according to your application specifics.
  */
@@ -123,7 +117,6 @@ $requirements = array(
         'memo' => 'PHP mail SMTP server required',
     ),
 );
-
 // OPcache check
 if (!version_compare(phpversion(), '5.5', '>=')) {
     $requirements[] = array(
@@ -133,5 +126,4 @@ if (!version_compare(phpversion(), '5.5', '>=')) {
         'by' => '<a href="http://www.yiiframework.com/doc-2.0/yii-caching-apccache.html">ApcCache</a>',
     );
 }
-
 $requirementsChecker->checkYii()->check($requirements)->render();

@@ -9,4 +9,4 @@ require __DIR__ . '/../app/Application.php';
 
 $config = require __DIR__ . '/../app/config/web.php';
 
-(new \app\Application($config))->run();
+(new app\Application($config))->run();
