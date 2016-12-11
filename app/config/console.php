@@ -1,11 +1,9 @@
 <?php
 
-return [
+$config = [
     'id' => 'console',
     'basePath' => dirname(dirname(__DIR__)),
     'bootstrap' => ['log'],
-    'aliases' => require __DIR__ . '/aliases.php',
-    'controllerNamespace' => 'app\commands',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -22,3 +20,16 @@ return [
     ],
     'params' => require __DIR__ . '/params.php',
 ];
+
+if (YII_ENV_DEV) {
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+    ];
+    $config['bootstrap'][] = 'add';
+    $config['modules']['add'] = [
+        'class' => 'strelov1\add\Module',
+    ];
+}
+
+return $config;

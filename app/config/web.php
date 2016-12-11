@@ -6,9 +6,7 @@ $config = [
     'id' => 'app',
     'basePath' => dirname(dirname(__DIR__)),
     'bootstrap' => ['log'],
-    'aliases' => require __DIR__ . '/aliases.php',
-    'modules' => require __DIR__ . '/modules.php',
-    'controllerNamespace' => 'app\controllers',
+    'apps' => ['article', 'user'],
     'layout' => false,
     'components' => [
         'db' => require __DIR__ . '/db.php',
@@ -21,7 +19,7 @@ $config = [
             'cookieValidationKey' => 'sC2a3J_QIzlPlik2Y0fbrHstoBctC-j1',
         ],
         'user' => [
-            'identityClass' => 'blog\models\User',
+            'identityClass' => 'user\models\User',
             'enableAutoLogin' => true,
         ],
         'cache' => [

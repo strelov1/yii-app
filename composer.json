@@ -16,7 +16,8 @@
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
-        "yiisoft/yii2-gii": "~2.0.0"
+        "yiisoft/yii2-gii": "~2.0.0",
+        "strelov1/yii2-add": "dev-master"
     },
     "config": {
         "process-timeout": 1800

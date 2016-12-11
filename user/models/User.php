@@ -1,12 +1,13 @@
 <?php
 
-namespace blog\models;
+namespace user\models;
 
 use yii\behaviors\TimestampBehavior;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
-use yii\db\ActiveRecord;
 use Yii;
+
+
 /**
  * User model
  *
@@ -21,10 +22,11 @@ use Yii;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_DELETED = 10;
+    const STATUS_ACTIVE = 11;
+
     /**
      * @inheritdoc
      */
@@ -32,6 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return '{{%user}}';
     }
+
     /**
      * @inheritdoc
      */
@@ -41,6 +44,7 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
         ];
     }
+
     /**
      * @inheritdoc
      */
@@ -51,6 +55,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
+
     /**
      * @inheritdoc
      */
